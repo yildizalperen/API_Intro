@@ -34,17 +34,17 @@ function GetEmployeeData(data) {
 }
 
 function searchEmployee() {
-    var input, filter, table, tr, td, i, txtValue;
+    var input, filter, table, tr, td, value;
     input = document.getElementById("employeeSearch");
     filter = input.value.toUpperCase();
-    table = document.getElementById("employeesTable");
+    table = document.getElementById("employeeTable");
     tr = table.getElementsByTagName("tr");
 
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[1];
         if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            value = td.textContent || td.innerText;
+            if (value.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
