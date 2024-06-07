@@ -17,12 +17,12 @@ function GetEmployeeData(data) {
         $("#employeeTable").append(
             `
                  <tr>
-                            <td id='employeeID'>${value.id}</td>
+                            <td>${value.id}</td>
                             <td>${value.firstname}</td>
                             <td>${value.lastname}</td>
                             <td>
-                            <button id='deleteEmployee' class='btn btn-xs btn-danger'>Delete</button>
-                            <button class='btn btn-xs btn-warning'>Update</button>
+                            <button onclick='deleteEmployee("${value.id}")' class='btn btn-xs btn-danger'>Delete</button>
+                            <button onclick='updateEmployee("${value.id}")' class='btn btn-xs btn-warning'>Update</button>
 
                             </td>
                         </tr>
@@ -65,6 +65,81 @@ $("#createEmployee").click(function () {
 
 
 })
+function updateEmployee(employeeID) {
+    const firstname = $("#firstname").val();
+    const lastname = $("#lastname").val();
+
+    $.ajax({
+        url: 'https://localhost:7032/api/employees/putemployee',
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(
+            {
+                ID: employeeID,
+                Firstname: firstname,
+                Lastname: lastname
+            }),
+        success: function (data) {
+            GetAjax();
+            Swal.fire({
+                title: "Başarılı!",
+                text: "Veri Güncellendi!",
+                icon: "success"
+            });
+        },
+        error: function (jqXHR, exception) {
+
+            if (jqXHR.status === 500) {
+                Swal.fire({
+                    title: "Hata!",
+                    text: "Servera Bağlanılamadı!",
+                    icon: "warning"
+                });
+            }
+            else if (jqXHR.status === 404) {
+                Swal.fire({
+                    title: "Hata!",
+                    text: "Sayfa Bulunamadı!",
+                    icon: "error"
+                });
+            }
+        },
+    })
+}
+
+function deleteEmployee(employeeID) {
+    $.ajax({
+        url: 'https://localhost:7032/api/employees/deleteemployee/'+employeeID,
+        type: 'DELETE',
+        contentType: 'application/json',
+        data: { ID: employeeID },
+        success: function (data) {
+            GetAjax();
+            Swal.fire({
+                title: "Başarılı!",
+                text: "Veri Silindi!",
+                icon: "success"
+            });
+        },
+        error: function (jqXHR, exception) {
+
+            if (jqXHR.status === 500) {
+                Swal.fire({
+                    title: "Hata!",
+                    text: "Servera Bağlanılamadı!",
+                    icon: "warning"
+                });
+            }
+            else if (jqXHR.status === 404) {
+                Swal.fire({
+                    title: "Hata!",
+                    text: "Sayfa Bulunamadı!",
+                    icon: "error"
+                });
+            }
+        },
+    })
+}
 
 function GetAjax() {
     //Ajax isteği oluşturma
