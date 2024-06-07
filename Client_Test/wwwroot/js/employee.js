@@ -33,6 +33,7 @@ function GetEmployeeData(data) {
 
 }
 
+//Filter by Firstname
 function searchEmployee() {
     var input, filter, table, tr, td, value;
     input = document.getElementById("employeeSearch");
@@ -104,6 +105,8 @@ $("#createEmployee").click(function () {
 
 
 })
+
+//Update Employee Ajax
 function updateEmployee(employeeID) {
     const firstname = $("#firstname").val();
     const lastname = $("#lastname").val();
@@ -146,6 +149,7 @@ function updateEmployee(employeeID) {
     })
 }
 
+//Delete Employee Ajax
 function deleteEmployee(employeeID) {
     $.ajax({
         url: 'https://localhost:7032/api/employees/deleteemployee/'+employeeID,
