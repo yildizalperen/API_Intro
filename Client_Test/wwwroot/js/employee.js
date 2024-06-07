@@ -75,12 +75,13 @@ function searchEmployee() {
 //                }
 //            }
 //        }
-        
+
 //    }
 //}
 
 
 //GetEmployeeData Kullanım
+
 GetEmployeeData();
 
 $("#createEmployee").click(function () {
