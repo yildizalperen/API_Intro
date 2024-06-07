@@ -55,6 +55,31 @@ function searchEmployee() {
 }
 
 
+//Filter by All
+//function searchEmployee() {
+//    var input, filter, table, tr, td;
+//    input = document.getElementById("employeeSearch");
+//    filter = input.value.toUpperCase();
+//    table = document.getElementById("employeeTable");
+//    tr = table.getElementsByTagName("tr");
+
+//    for (i = 0; i < tr.length; i++) {
+//        var tds = tr[i].getElementsByTagName("td");
+//        for (var j = 0; j < tds.length; j++) {
+//            td = tds[j];
+//            if (td) {
+//                if (td.innerText.toUpperCase().indexOf(filter) > -1) {
+//                    tr[i].style.display = "";
+//                } else {
+//                    tr[i].style.display = "none";
+//                }
+//            }
+//        }
+        
+//    }
+//}
+
+
 //GetEmployeeData Kullanım
 GetEmployeeData();
 
