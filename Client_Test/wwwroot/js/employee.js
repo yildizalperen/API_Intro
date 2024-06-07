@@ -55,9 +55,9 @@ function searchEmployee() {
 }
 
 
-//Filter by All
+/*Filter by All*/
 //function searchEmployee() {
-//    var input, filter, table, tr, td;
+//    var input, filter, table, tr, td, value;
 //    input = document.getElementById("employeeSearch");
 //    filter = input.value.toUpperCase();
 //    table = document.getElementById("employeeTable");
@@ -68,7 +68,8 @@ function searchEmployee() {
 //        for (var j = 0; j < tds.length; j++) {
 //            td = tds[j];
 //            if (td) {
-//                if (td.innerText.toUpperCase().indexOf(filter) > -1) {
+//                value = td.textContent || td.innerText
+//                if (value.toUpperCase().indexOf(filter) > -1) {
 //                    tr[i].style.display = "";
 //                } else {
 //                    tr[i].style.display = "none";
