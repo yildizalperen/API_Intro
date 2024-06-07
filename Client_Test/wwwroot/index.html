@@ -37,11 +37,11 @@
                     <div class="card-header d-flex justify-content-between">
                         <h2>Employee List</h2>
                         <div class="d-flex">
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" id="employeeSearch" onkeyup="searchEmployee()" placeholder="Search for names.." />
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table" id="employeesTable">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
