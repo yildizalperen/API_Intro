@@ -56,10 +56,29 @@ $("#createEmployee").click(function () {
         ),
         success: function (data) {
             GetAjax();
+            Swal.fire({
+                title: "Başarılı!",
+                text: "Veri Eklendi!",
+                icon: "success"
+            });
         },
-        error: function (err) {
+        error: function (jqXHR, exception) {
 
-        }
+            if (jqXHR.status === 500) {
+                Swal.fire({
+                    title: "Hata!",
+                    text: "Servera Bağlanılamadı!",
+                    icon: "warning"
+                });
+            }
+            else if (jqXHR.status === 404) {
+                Swal.fire({
+                    title: "Hata!",
+                    text: "Sayfa Bulunamadı!",
+                    icon: "error"
+                });
+            }
+        },
     })
 
 
